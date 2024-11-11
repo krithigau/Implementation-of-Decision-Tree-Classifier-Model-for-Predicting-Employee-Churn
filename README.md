@@ -18,58 +18,70 @@ To write a program to implement the Decision Tree Classifier Model for Predictin
 ```
 /*
 Program to implement the Decision Tree Classifier Model for Predicting Employee Churn.
-Developed by:KRITHIGA U
-RegisterNumber:  212223240076
+Developed by: Krithiga U
+RegisterNumber: 212223240076
 */
-
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-data=pd.read_csv("Employee_EX6.csv")
+data = pd.read_csv("Employee.csv")
 data.head()
 data.info()
+
 data.isnull().sum()
-data["left"].value_counts()
+
+data["left"].value_counts
+
 from sklearn.preprocessing import LabelEncoder
-le=LabelEncoder()
+le= LabelEncoder()
 data["salary"]=le.fit_transform(data["salary"])
 data.head()
-x=data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
+
+x= data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
+
 x.head()
 y=data["left"]
+
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=100)
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state = 100)
+
 from sklearn.tree import DecisionTreeClassifier
-dt=DecisionTreeClassifier(criterion="entropy")
+dt = DecisionTreeClassifier(criterion="entropy")
 dt.fit(x_train,y_train)
-y_pred=dt.predict(x_test)
+
+y_pred = dt.predict(x_test)
 from sklearn import metrics
-accuracy=metrics.accuracy_score(y_test,y_pred)
+
+accuracy = metrics.accuracy_score(y_test,y_pred)
 accuracy
+
 dt.predict([[0.5,0.8,9,260,6,0,1,2]])
-plt.figure(figsize=(18,6))
-plot_tree(dt,feature_names=x.columns,class_names=['salary','left'],filled=True)
-plt.show()
 ```
 ## Output:
 ##HEAD() & INFO():
 
-![image](https://github.com/user-attachments/assets/704e5cb7-0ded-461e-8724-97a729810f29)
+![image](https://github.com/user-attachments/assets/ea967636-3019-4b34-8e78-35768d4deee4)
 
+![image](https://github.com/user-attachments/assets/cbfb6fe8-5f39-4d0d-b977-b97e2a51af55)
 
-##NULL & COUNT:
+data.isnull().sum()
 
-![image](https://github.com/user-attachments/assets/76def074-91c4-4ad5-aa13-c568507e5211)
-![image](https://github.com/user-attachments/assets/80eefd9a-355f-4489-8445-eabdd154b60d)
+![image](https://github.com/user-attachments/assets/99bb5c13-ec29-492a-8f32-b6dfe354743c)
 
+data.value.counts()
 
-##ACCURACY SCORE:
+![image](https://github.com/user-attachments/assets/024e96b5-ac87-4252-a025-b8157834ebf7)
 
-![image](https://github.com/user-attachments/assets/b50cc95a-cbbc-4a67-9c58-5e22717dede7)
+x.head()
 
+![image](https://github.com/user-attachments/assets/04df92d2-fe0a-443b-915c-78971b3c106b)
 
-##DECISION TREE CLASSIFIER MODEL:
+##ACCURACY SCORE: 
 
-![image](https://github.com/user-attachments/assets/0cd2e0fa-9bf1-49b6-b472-c33f29143b9b)
+![image](https://github.com/user-attachments/assets/c75dd1b2-4688-4447-8f08-4df16abf0a73)
+
+prediction:
+
+![image](https://github.com/user-attachments/assets/c326e790-6f08-43e6-b079-42b93cbda270)
+
 
 ## Result:
 Thus the program to implement the  Decision Tree Classifier Model for Predicting Employee Churn is written and verified using python programming.
